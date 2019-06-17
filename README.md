@@ -1,7 +1,6 @@
 # Verify GSP Cluster Configuration
 
-GSP Cluster configuration for Verify.
-
+[GSP](https://github.com/alphagov/gsp) Cluster configuration for Verify.
 
 ## Overview
 
@@ -10,7 +9,6 @@ This repository is the entrypoint for:
 * Configuring the namespaces present in the cluster
 * Configuring variables used by the main gsp cluster deployment pipeline
 * Configuring the scale of the cluster (ie max number of nodes, instance sizes etc)
-* etc
 
 See [GSP](https://github.com/alphagov/gsp) for more information
 
