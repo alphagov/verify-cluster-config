@@ -47,11 +47,11 @@ namespaces:
   requiredApprovalCount: 2
 - name: verify-proxy-node-integration
   owner: alphagov
-  repository: verify-proxy-integration
+  repository: verify-proxy-node
   path: ci/integration
   requiredApprovalCount: 2
 - name: verify-proxy-node-prod
   owner: alphagov
-  repository: verify-proxy-prod
+  repository: verify-proxy-node
   path: ci/prod
   requiredApprovalCount: 2
