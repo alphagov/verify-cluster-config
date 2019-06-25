@@ -27,8 +27,8 @@ users-version: "master"
 users-path: "users"
 disable-destroy: true
 worker-instance-type: m5d.large
-worker-count: 3
-ci-worker-instance-type: t3.large
+worker-count: 6
+ci-worker-instance-type: m5d.large
 ci-worker-count: 3
 github-client-id: "1dbe43926d46b9ded8ad"
 github-approval-count: 1
