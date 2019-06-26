@@ -19,7 +19,3 @@ Changes to this repository:
 * Are continuously deployed by concourse on merge to master.
 * Require commits signed by [Trusted Developers](https://github.com/alphagov/gds-trusted-developers/).
 * Require approvals by authorized users.
-
-
-
-
