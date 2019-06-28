@@ -1,1 +1,24 @@
----
+namespaces:
+- name: verify-metadata-controller
+  owner: alphagov
+  repository: verify-metadata-controller
+  branch: master
+  path: ci
+  permittedRolesRegex: "^$"
+  requiredApprovalCount: 2
+  scope: cluster
+- name: verify-proxy-node-build
+  owner: alphagov
+  repository: verify-proxy-node
+  path: ci/build
+  requiredApprovalCount: 2
+- name: verify-proxy-node-integration
+  owner: alphagov
+  repository: verify-proxy-node
+  path: ci/integration
+  requiredApprovalCount: 2
+- name: verify-proxy-node-prod
+  owner: alphagov
+  repository: verify-proxy-node
+  path: ci/prod
+  requiredApprovalCount: 2
