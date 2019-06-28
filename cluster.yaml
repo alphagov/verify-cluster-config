@@ -2,14 +2,11 @@ concourse-team: gsp
 concourse-username: gsp
 concourse-url: https://cd.gds-reliability.engineering
 concourse-pipeline-name: verify-deployer
-account-id: "367051407649"
 account-name: "verify"
-account-role-arn: "arn:aws:iam::367051407649:role/deployer"
 cluster-name: "verify"
 cluster-number: "255"
 cluster-domain: "london.verify.govsvc.uk"
 splunk-enabled: "1"
-eks-version: "1.12"
 platform-uri: "https://github.com/alphagov/gsp.git"
 platform-organization: "alphagov"
 platform-repository: "gsp"
@@ -30,29 +27,4 @@ worker-instance-type: m5d.large
 worker-count: 6
 ci-worker-instance-type: m5d.large
 ci-worker-count: 3
-github-client-id: "1dbe43926d46b9ded8ad"
 github-approval-count: 1
-namespaces:
-- name: verify-metadata-controller
-  owner: alphagov
-  repository: verify-metadata-controller
-  branch: master
-  path: ci
-  permittedRolesRegex: "^$"
-  requiredApprovalCount: 2
-  scope: cluster
-- name: verify-proxy-node-build
-  owner: alphagov
-  repository: verify-proxy-node
-  path: ci/build
-  requiredApprovalCount: 2
-- name: verify-proxy-node-integration
-  owner: alphagov
-  repository: verify-proxy-node
-  path: ci/integration
-  requiredApprovalCount: 2
-- name: verify-proxy-node-prod
-  owner: alphagov
-  repository: verify-proxy-node
-  path: ci/prod
-  requiredApprovalCount: 2
