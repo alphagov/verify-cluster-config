@@ -2,9 +2,7 @@ concourse-team: gsp
 concourse-username: gsp
 concourse-url: https://cd.gds-reliability.engineering
 concourse-pipeline-name: verify-deployer
-account-id: "367051407649"
 account-name: "verify"
-account-role-arn: "arn:aws:iam::367051407649:role/deployer"
 cluster-name: "verify"
 cluster-number: "255"
 cluster-domain: "london.verify.govsvc.uk"
@@ -30,7 +28,6 @@ worker-instance-type: m5d.large
 worker-count: 6
 ci-worker-instance-type: m5d.large
 ci-worker-count: 3
-github-client-id: "1dbe43926d46b9ded8ad"
 github-approval-count: 1
 namespaces:
 - name: verify-metadata-controller
