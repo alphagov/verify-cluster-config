@@ -1,4 +1,5 @@
 namespaces:
+- name: verify-main
 - name: verify-metadata-controller
   owner: alphagov
   repository: verify-metadata-controller
