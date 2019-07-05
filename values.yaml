@@ -1,3 +1,9 @@
+---
+global:
+  cloudHsm:
+    enabled: true
+    ip: "10.255.151.206"
+
 namespaces:
 - name: verify-main
 - name: verify-metadata-controller
