@@ -16,6 +16,7 @@ httpsEgressSafelist:
 
 namespaces:
 - name: verify-main
+
 - name: verify-metadata-controller
   owner: alphagov
   repository: verify-metadata-controller
@@ -24,6 +25,7 @@ namespaces:
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
   scope: cluster
+
 - name: verify-proxy-node-build
   owner: alphagov
   repository: verify-proxy-node
@@ -38,4 +40,26 @@ namespaces:
   owner: alphagov
   repository: verify-proxy-node
   path: ci/prod
+  requiredApprovalCount: 2
+
+- name: doc-checking-staging
+  owner: alphagov
+  repository: doc-checking
+  branch: master
+  path: ci/staging
+  permittedRolesRegex: "^$"
+  requiredApprovalCount: 2
+- name: doc-checking-test
+  owner: alphagov
+  repository: doc-checking
+  branch: master
+  path: ci/test
+  permittedRolesRegex: "^$"
+  requiredApprovalCount: 2
+- name: doc-checking-prod
+  owner: alphagov
+  repository: doc-checking
+  branch: master
+  path: ci/prod
+  permittedRolesRegex: "^$"
   requiredApprovalCount: 2
