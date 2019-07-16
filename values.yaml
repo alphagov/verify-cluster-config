@@ -4,6 +4,10 @@ global:
     enabled: true
     ip: "10.255.151.206"
 
+httpsEgressSafelist:
+- name: hub
+  fqdn: www.integration.signin.service.gov.uk
+
 namespaces:
 - name: verify-main
 - name: verify-metadata-controller
