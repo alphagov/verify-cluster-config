@@ -7,6 +7,10 @@ global:
 httpsEgressSafelist:
 - name: hub
   fqdn: www.integration.signin.service.gov.uk
+- name: nl
+  fqdn: acc-eidas.minez.nl
+- name: stub-connector
+  fqdn: test-connector-metadata.london.verify.govsvc.uk
 
 namespaces:
 - name: verify-main
