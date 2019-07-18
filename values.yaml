@@ -5,8 +5,6 @@ global:
     ip: "10.255.151.206"
 
 httpsEgressSafelist:
-- name: proxy-node-test
-  fqdn: test-proxy-node.london.verify.govsvc.uk
 - name: stub-connector
   fqdn: test-connector.london.verify.govsvc.uk
 - name: hub-integration
