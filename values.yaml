@@ -5,14 +5,22 @@ global:
     ip: "10.255.151.206"
 
 httpsEgressSafelist:
-- name: hub
-  fqdn: www.integration.signin.service.gov.uk
-- name: nl
-  fqdn: acc-eidas.minez.nl
-- name: dk
-  fqdn: eidasconnector.test.eid.digst.dk
+- name: proxy-node-test
+  fqdn: test-proxy-node.london.verify.govsvc.uk
 - name: stub-connector
-  fqdn: test-connector-metadata.london.verify.govsvc.uk
+  fqdn: test-connector.london.verify.govsvc.uk
+- name: hub-integration
+  fqdn: www.integration.signin.service.gov.uk
+- name: nl-integration
+  fqdn: acc-eidas.minez.nl
+- name: dk-integration
+  fqdn: eidasconnector.test.eid.digst.dk
+- name: hub-prod
+  fqdn: www.signin.service.gov.uk
+- name: nl-prod
+  fqdn: eidas.minez.nl
+- name: dk-prod
+  fqdn: eidasconnector.eid.digst.dk
 
 namespaces:
 - name: verify-main
