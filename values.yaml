@@ -48,6 +48,29 @@ namespaces:
   path: ci/prod
   requiredApprovalCount: 2
 
+# legacy; needs to be deleted carefully
+- name: doc-checking-staging
+  owner: alphagov
+  repository: doc-checking
+  branch: master
+  path: ci/staging
+  permittedRolesRegex: "^$"
+  requiredApprovalCount: 2
+- name: doc-checking-test
+  owner: alphagov
+  repository: doc-checking
+  branch: master
+  path: ci/test
+  permittedRolesRegex: "^$"
+  requiredApprovalCount: 2
+- name: doc-checking-prod
+  owner: alphagov
+  repository: doc-checking
+  branch: master
+  path: ci/prod
+  permittedRolesRegex: "^$"
+  requiredApprovalCount: 2
+
 - name: verify-doc-checking-staging
   owner: alphagov
   repository: doc-checking
