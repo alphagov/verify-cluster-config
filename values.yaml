@@ -97,7 +97,7 @@ namespaces:
 - name: verify-doc-checking-build
   owner: alphagov
   repository: doc-checking
-  branch: master
+  branch: OGD-253/make-pipeline-push-to-harbour
   path: ci/build
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
