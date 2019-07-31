@@ -9,6 +9,8 @@ httpsEgressSafelist:
   fqdn: test-connector.london.verify.govsvc.uk
 - name: hub-integration
   fqdn: www.integration.signin.service.gov.uk
+- name: test-intgegration
+  fqdn: test-integration-connector.london.verify.govsvc.uk
 - name: nl-integration
   fqdn: acc-eidas.minez.nl
 - name: dk-integration
