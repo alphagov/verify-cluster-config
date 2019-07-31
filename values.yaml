@@ -9,6 +9,8 @@ httpsEgressSafelist:
   fqdn: test-connector.london.verify.govsvc.uk
 - name: hub-integration
   fqdn: www.integration.signin.service.gov.uk
+- name: test-intgegration
+  fqdn: test-integration-connector.london.verify.govsvc.uk
 - name: nl-integration
   fqdn: acc-eidas.minez.nl
 - name: dk-integration
@@ -95,7 +97,7 @@ namespaces:
 - name: verify-doc-checking-build
   owner: alphagov
   repository: doc-checking
-  branch: master
+  branch: OGD-253/make-pipeline-push-to-harbour
   path: ci/build
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
