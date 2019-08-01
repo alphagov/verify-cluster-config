@@ -25,6 +25,13 @@ httpsEgressSafelist:
 namespaces:
 - name: verify-main
 
+- name: verify-connector-node-metadata
+  owner: alphagov
+  repository: verify-metadata
+  branch: master
+  path: ci/verify
+  requiredApprovalCount: 2
+
 - name: verify-metadata-controller
   owner: alphagov
   repository: verify-metadata-controller
