@@ -152,3 +152,13 @@ jobs:
     params:
       terraform_source: src/terraform
       env_name: ((account-name))
+
+- name: destroy
+  plan:
+  - get: src
+    passed: [deploy-psn-vpc-endpoint]
+  - put: psn-state
+    params:
+      action: destroy
+      env_name: ((account-name))
+      terraform_source: src/terraform
