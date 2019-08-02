@@ -107,4 +107,4 @@ namespaces:
   branch: OGD-253/make-pipeline-push-to-harbour
   path: ci/build
   permittedRolesRegex: "^$"
-  requiredApprovalCount: 1
+  requiredApprovalCount: 0
