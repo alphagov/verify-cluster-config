@@ -49,6 +49,4 @@ module "psn" {
   vpc_endpoint       = "${var.vpc_endpoint}"
   subnet_ids         = ["${data.terraform_remote_state.gsp_cluster.subnet_ids[0]}", "${data.terraform_remote_state.gsp_cluster.subnet_ids[1]}"]
   security_group_ids = ["${data.terraform_remote_state.gsp_cluster.worker_security_group_id}"]
-  r53_zone_id        = "${data.terraform_remote_state.gsp_cluster.r53_zone_id}"
-  r53_zone_name      = "${data.terraform_remote_state.gsp_cluster.r53_zone_name}"
 }

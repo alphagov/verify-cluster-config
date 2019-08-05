@@ -18,16 +18,6 @@ variable "security_group_ids" {
   description = "The ID of one or more security groups to associate with the network interface."
 }
 
-variable "r53_zone_id" {
-  type        = "string"
-  description = "The ID of the hosted zone to contain this record."
-}
-
-variable "r53_zone_name" {
-  type        = "string"
-  description = "The name of the record."
-}
-
 resource "aws_vpc_endpoint" "psn_service" {
   vpc_id            = "${var.vpc_id}"
   service_name      = "${var.vpc_endpoint}"
@@ -39,10 +29,27 @@ resource "aws_vpc_endpoint" "psn_service" {
   private_dns_enabled = false
 }
 
+resource "aws_route53_zone" "private" {
+  name = "vpc.internal"
+
+  vpc {
+    vpc_id = "${var.vpc_id}"
+  }
+}
+
 resource "aws_route53_record" "psn_service" {
-  zone_id = "${var.r53_zone_id}"
-  name    = "psn.${var.r53_zone_name}"
+  zone_id = "${aws_route53_zone.private.zone_id}"
+  name    = "psn.${aws_route53_zone.private.name}"
   type    = "CNAME"
   ttl     = "300"
   records = ["${lookup(aws_vpc_endpoint.psn_service.dns_entry[0], "dns_name")}"]
+}
+
+resource "aws_route53_record" "psn_regioned_service" {
+  count   = 2
+  zone_id = "${aws_route53_zone.private.zone_id}"
+  name    = "psn.${count.index+1}.${aws_route53_zone.private.name}"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["${lookup(aws_vpc_endpoint.psn_service.dns_entry[count.index+1], "dns_name")}"]
 }
