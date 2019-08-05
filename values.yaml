@@ -86,7 +86,7 @@ namespaces:
   branch: OGD-253/make-pipeline-push-to-harbour
   path: ci/staging
   permittedRolesRegex: "^$"
-  requiredApprovalCount: 2
+  requiredApprovalCount: 0
 - name: verify-doc-checking-test
   owner: alphagov
   repository: doc-checking
