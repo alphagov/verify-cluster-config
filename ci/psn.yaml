@@ -1,0 +1,164 @@
+---
+unpack_release: &unpack_release
+  platform: linux
+  params:
+    CLUSTER_PUBLIC_KEY:
+  run:
+    path: /bin/bash
+    args:
+    - -euo
+    - pipefail
+    - -c
+    - |
+      echo "preparing keyring to verify release..."
+      echo "${CLUSTER_PUBLIC_KEY}" > key
+      gpg --import key
+      gpg --verify gsp/source.tar.gz.asc
+      echo "unpacking src tarball..."
+      tar -xvf gsp/source.tar.gz -C platform --strip-components=1
+  inputs:
+  - name: gsp
+  outputs:
+  - name: platform
+
+resource_types:
+- name: terraform
+  type: registry-image
+  source:
+    repository: govsvc/terraform-resource
+    tag: 0.13.0-beta.2
+- name: github
+  type: registry-image
+  source:
+    repository: ((github-resource-image))
+    tag: ((github-resource-tag))
+- name: concourse-pipeline
+  type: docker-image
+  source:
+    repository: concourse/concourse-pipeline-resource
+    tag: "2.2.0"
+
+resources:
+- name: gsp
+  type: github-release
+  source:
+    owner: alphagov
+    repository: gsp
+    access_token: ((github-api-token))
+    release: true
+    tag_filter: gsp-v([^v].*)
+
+- name: users
+  type: github-release
+  source:
+    owner: alphagov
+    repository: gds-trusted-developers
+    access_token: ((github-api-token))
+    release: true
+
+- name: src
+  type: github
+  source:
+    uri: https://github.com/alphagov/verify-cluster-config.git
+    branch: master
+    organization: alphagov
+    repository: verify-cluster-config
+    github_api_token: ((github-api-token))
+    approvers: ((github-approvers))
+    required_approval_count: 2
+    commit_verification_keys: ((trusted-developer-keys))
+
+- name: psn-state
+  type: terraform
+  source:
+    env_name: ((account-name))
+    backend_type: s3
+    backend_config:
+      bucket: cd-gsp-private-qndvvc
+      region: eu-west-2
+      key: psn-cluster-((cluster-name)).tfstate
+    vars:
+      aws_account_role_arn: ((account-role-arn))
+      gsp_cluster_state_bucket_name: cd-gsp-private-qndvvc
+      gsp_cluster_state_bucket_key: cluster-((cluster-name)).tfstate
+      workspace_name: ((account-name))
+      vpc_endpoint: ((psn-vpc-endpoint))
+
+- name: task-toolbox
+  type: docker-image
+  source:
+    repository: govsvc/task-toolbox
+    tag: latest
+
+- name: pipeline
+  type: concourse-pipeline
+  source:
+    teams:
+    - name: gsp
+      username: gsp
+      password: ((readonly_local_user_password))
+
+jobs:
+- name: update
+  plan:
+  - get: src
+    trigger: true
+  - get: task-toolbox
+  - get: gsp
+    trigger: true
+    params:
+      include_source_tarball: true
+  - get: users
+    trigger: true
+
+  - task: unpack-gsp-release
+    image: task-toolbox
+    config: *unpack_release
+    params:
+      CLUSTER_PUBLIC_KEY: ((ci-system-gpg-public))
+
+  - task: generate-trusted-contributors
+    image: task-toolbox
+    file: platform/pipelines/tasks/generate-trusted-contributors.yaml
+    params:
+      ACCOUNT_NAME: ((account-name))
+      CLUSTER_PUBLIC_KEY: ((ci-system-gpg-public))
+
+  - put: pipeline
+    params:
+      pipelines:
+      - name: ((concourse-pipeline-name))
+        team: ((concourse-team))
+        config_file: src/ci/psn.yaml
+        vars_files:
+        - trusted-contributors/github.vars.yaml
+        - trusted-contributors/keys.vars.yaml
+        vars:
+          account-name: ((account-name))
+          account-role-arn: ((account-role-arn))
+          cluster-name: ((cluster-name))
+          github-approval-count: 0
+          github-resource-image: ((github-resource-image))
+          github-resource-tag: ((github-resource-tag))
+          concourse-pipeline-name: ((concourse-pipeline-name))
+          concourse-team: ((concourse-team))
+
+- name: deploy-psn-vpc-endpoint
+  plan:
+  - get: src
+    passed: [update]
+    trigger: true
+  - put: psn-state
+    params:
+      terraform_source: src/terraform
+      env_name: ((account-name))
+
+- name: destroy
+  plan:
+  - get: src
+    passed: [deploy-psn-vpc-endpoint]
+  - put: psn-state
+    params:
+      action: destroy
+      env_name: ((account-name))
+      terraform_source: src/terraform
