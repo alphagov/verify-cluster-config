@@ -21,6 +21,8 @@ httpsEgressSafelist:
   fqdn: eidas.minez.nl
 - name: dk-prod
   fqdn: eidasconnector.eid.digst.dk
+- name: sqs-eu-west-2
+  fqdn: sqs.eu-west-2.amazonaws.com
 
 namespaces:
 - name: verify-main
