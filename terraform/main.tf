@@ -44,9 +44,9 @@ data "terraform_remote_state" "gsp_cluster" {
 }
 
 module "psn" {
-  source             = "./modules/psn"
-  vpc_id             = "${data.terraform_remote_state.gsp_cluster.vpc_id}"
-  vpc_endpoint       = "${var.vpc_endpoint}"
-  subnet_ids         = ["${data.terraform_remote_state.gsp_cluster.subnet_ids[0]}", "${data.terraform_remote_state.gsp_cluster.subnet_ids[1]}"]
-  security_group_ids = ["${data.terraform_remote_state.gsp_cluster.worker_security_group_id}"]
+  source            = "./modules/psn"
+  vpc_id            = "${data.terraform_remote_state.gsp_cluster.vpc_id}"
+  vpc_endpoint      = "${var.vpc_endpoint}"
+  subnet_ids        = ["${data.terraform_remote_state.gsp_cluster.subnet_ids[0]}", "${data.terraform_remote_state.gsp_cluster.subnet_ids[1]}"]
+  security_group_id = "${data.terraform_remote_state.gsp_cluster.worker_security_group_id}"
 }
