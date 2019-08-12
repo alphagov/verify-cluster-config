@@ -29,4 +29,4 @@ ci-worker-instance-type: m5d.large
 ci-worker-count: 3
 github-approval-count: 1
 config-approval-count: 1
-enable-nlb: false
+enable-nlb: 1
