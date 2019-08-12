@@ -63,10 +63,10 @@ namespaces:
 - name: doc-checking-staging
   owner: alphagov
   repository: doc-checking
-  branch: master
+  branch: OGD-253/make-pipeline-push-to-harbour
   path: ci/staging
   permittedRolesRegex: "^$"
-  requiredApprovalCount: 2
+  requiredApprovalCount: 0
 - name: doc-checking-test
   owner: alphagov
   repository: doc-checking
