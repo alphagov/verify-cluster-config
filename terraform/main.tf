@@ -30,7 +30,6 @@ provider "aws" {
   }
 }
 
-
 data "terraform_remote_state" "gsp_cluster" {
   backend = "s3"
 
@@ -49,4 +48,13 @@ module "psn" {
   vpc_endpoint       = "${var.vpc_endpoint}"
   subnet_ids         = ["${data.terraform_remote_state.gsp_cluster.subnet_ids[0]}", "${data.terraform_remote_state.gsp_cluster.subnet_ids[1]}"]
   security_group_ids = ["${data.terraform_remote_state.gsp_cluster.worker_security_group_id}"]
+}
+
+resource "aws_route53_record" "dcs_dev" {
+  zone_id = "${data.terraform_remote_state.gsp_cluster.r53_zone_id}"
+  name    = "dcs-dev.${data.terraform_remote_state.gsp_cluster.cluster_domain}"
+  type    = "CNAME"
+  ttl     = 3600
+
+  records = ["nlb.${data.terraform_remote_state.gsp_cluster.cluster_domain}"]
 }
