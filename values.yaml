@@ -4,6 +4,12 @@ global:
     enabled: true
     ip: "10.255.151.206"
 
+concourse:
+  web:
+    replicas: 3
+  worker:
+    replicas: 6
+
 # whitelist of services external from the cluster
 # that we allow egress traffic to.
 # see https://istio.io/docs/reference/config/networking/v1alpha3/service-entry/#ServiceEntry

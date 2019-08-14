@@ -25,8 +25,8 @@ users-path: "users"
 disable-destroy: true
 worker-instance-type: m5d.large
 worker-count: 9
-ci-worker-instance-type: m5d.large
-ci-worker-count: 3
+ci-worker-instance-type: m5d.xlarge
+ci-worker-count: 6
 github-approval-count: 1
 config-approval-count: 1
 enable-nlb: 1
