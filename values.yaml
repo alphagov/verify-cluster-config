@@ -63,7 +63,7 @@ namespaces:
   owner: alphagov
   repository: doc-checking
   branch: OGD-321/fix-egress-for-ocsp
-  path: ci/build # This is a hack, will be reverted.
+  path: ci/staging 
   permittedRolesRegex: "^$"
   requiredApprovalCount: 0
 - name: verify-doc-checking-test
