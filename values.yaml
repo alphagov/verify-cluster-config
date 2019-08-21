@@ -24,6 +24,10 @@ httpsEgressSafelist:
 - name: sqs-eu-west-2
   fqdn: sqs.eu-west-2.amazonaws.com
 
+httpEgressSafelist:
+- name: ocsp
+  fqdn: std-ocsp.trustwise.com
+
 namespaces:
 - name: verify-main
 
