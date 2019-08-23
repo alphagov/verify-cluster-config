@@ -38,7 +38,7 @@ namespaces:
   owner: alphagov
   repository: verify-metadata-controller
   branch: master
-  path: ci
+  path: ci/verify
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
   scope: cluster
