@@ -23,6 +23,8 @@ httpsEgressSafelist:
   fqdn: eidasconnector.eid.digst.dk
 - name: sqs-eu-west-2
   fqdn: sqs.eu-west-2.amazonaws.com
+- name: queue-eu-west-2
+  fqdn: eu-west-2.queue.amazonaws.com # legacy endpoint
 
 httpEgressSafelist:
 - name: ocsp
