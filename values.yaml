@@ -93,12 +93,13 @@ egressSafelist:
 - name: rds-eu-west-2
   service:
     hosts: ["*.eu-west-2.rds.amazonaws.com"]
+    addresses: ["10.0.0.0/8"]
     ports:
     - name: postgres
       number: 5432
       protocol: TLS
     location: MESH_EXTERNAL
-    resolution: DNS
+    resolution: NONE
 - name: ocsp
   service:
     hosts: ["std-ocsp.trustwise.com"]
