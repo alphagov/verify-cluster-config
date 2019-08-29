@@ -4,31 +4,111 @@ global:
     enabled: true
     ip: "10.255.151.206"
 
-httpsEgressSafelist:
+# whitelist of services external from the cluster
+# that we allow egress traffic to.
+# see https://istio.io/docs/reference/config/networking/v1alpha3/service-entry/#ServiceEntry
+# for the format of the `service` block
+egressSafelist:
 - name: stub-connector
-  fqdn: test-connector.london.verify.govsvc.uk
+  service:
+    hosts: ["test-connector.london.verify.govsvc.uk"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
 - name: hub-integration
-  fqdn: www.integration.signin.service.gov.uk
+  service:
+    hosts: ["www.integration.signin.service.gov.uk"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
 - name: test-intgegration
-  fqdn: test-integration-connector.london.verify.govsvc.uk
+  service:
+    hosts: ["test-integration-connector.london.verify.govsvc.uk"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
 - name: nl-integration
-  fqdn: acc-eidas.minez.nl
+  service:
+    hosts: ["acc-eidas.minez.nl"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
 - name: dk-integration
-  fqdn: eidasconnector.test.eid.digst.dk
+  service:
+    hosts: ["eidasconnector.test.eid.digst.dk"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
 - name: hub-prod
-  fqdn: www.signin.service.gov.uk
+  service:
+    hosts: ["www.signin.service.gov.uk"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
 - name: nl-prod
-  fqdn: eidas.minez.nl
+  service:
+    hosts: ["eidas.minez.nl"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
 - name: dk-prod
-  fqdn: eidasconnector.eid.digst.dk
+  service:
+    hosts: ["eidasconnector.eid.digst.dk"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
 - name: sqs-eu-west-2
-  fqdn: sqs.eu-west-2.amazonaws.com
-- name: queue-eu-west-2
-  fqdn: eu-west-2.queue.amazonaws.com # legacy endpoint
-
-httpEgressSafelist:
+  service:
+    hosts: ["sqs.eu-west-2.amazonaws.com", "eu-west-2.queue.amazonaws.com"]
+    ports:
+    - name: https
+      number: 443
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
+- name: rds-eu-west-2
+  service:
+    hosts: ["*.eu-west-2.rds.amazonaws.com"]
+    addresses: ["10.0.0.0/8"]
+    ports:
+    - name: postgres
+      number: 5432
+      protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: NONE
 - name: ocsp
-  fqdn: std-ocsp.trustwise.com
+  service:
+    hosts: ["std-ocsp.trustwise.com"]
+    ports:
+    - name: http
+      number: 80
+      protocol: HTTP
+    location: MESH_EXTERNAL
+    resolution: DNS
 
 namespaces:
 - name: verify-main
