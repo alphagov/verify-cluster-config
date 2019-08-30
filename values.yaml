@@ -96,7 +96,7 @@ egressSafelist:
     addresses: ["10.0.0.0/8"]
     ports:
     - name: postgres
-      number: 5432
+      number: 3306
       protocol: TLS
     location: MESH_EXTERNAL
     resolution: NONE
