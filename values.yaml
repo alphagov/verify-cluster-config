@@ -97,7 +97,7 @@ egressSafelist:
     ports:
     - name: postgres
       number: 3306
-      protocol: TLS
+      protocol: TCP
     location: MESH_EXTERNAL
     resolution: NONE
 - name: ocsp
