@@ -128,22 +128,26 @@ namespaces:
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
   scope: cluster
+  talksToHsm: true
 
 - name: verify-proxy-node-build
   owner: alphagov
   repository: verify-proxy-node
   path: ci/build
   requiredApprovalCount: 2
+  talksToHsm: true
 - name: verify-proxy-node-integration
   owner: alphagov
   repository: verify-proxy-node
   path: ci/integration
   requiredApprovalCount: 2
+  talksToHsm: true
 - name: verify-proxy-node-prod
   owner: alphagov
   repository: verify-proxy-node
   path: ci/prod
   requiredApprovalCount: 2
+  talksToHsm: true
 
 - name: verify-doc-checking-staging
   owner: alphagov
