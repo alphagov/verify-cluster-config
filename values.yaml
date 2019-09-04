@@ -9,78 +9,54 @@ global:
 # see https://istio.io/docs/reference/config/networking/v1alpha3/service-entry/#ServiceEntry
 # for the format of the `service` block
 egressSafelist:
-- name: stub-connector
+- name: proxy-node-integration
   service:
-    hosts: ["test-connector.london.verify.govsvc.uk"]
+    hosts:
+      # Stub Connector build
+      - test-connector.london.verify.govsvc.uk
+      # Stub Connector
+      - test-integration-connector.london.verify.govsvc.uk
+      # Hub integration
+      - www.integration.signin.service.gov.uk
+      # Netherlands
+      - acc-eidas.minez.nl
+      # Denmark
+      - eidasconnector.test.eid.digst.dk
+      # Sweden
+      - qa.connector.eidas.swedenconnect.se
+      # Czechia
+      - conn.dev.eidasnode.cz
+      # Italy
+      - connector.pre.eid.gov.it
     ports:
     - name: https
       number: 443
       protocol: TLS
     location: MESH_EXTERNAL
     resolution: DNS
-- name: hub-integration
+
+- name: proxy-node-production
   service:
-    hosts: ["www.integration.signin.service.gov.uk"]
+    hosts:
+      # Hub production
+      - www.signin.service.gov.uk
+      # Netherlands
+      - eidas.minez.nl
+      # Denmark
+      - eidasconnector.eid.digst.dk
+      # Sweden
+      - connector.eidas.swedenconnect.se
+      # Czechia
+      - conn.eidasnode.cz
+      # Italy
+      - connector.eid.gov.it
     ports:
     - name: https
       number: 443
       protocol: TLS
     location: MESH_EXTERNAL
     resolution: DNS
-- name: test-intgegration
-  service:
-    hosts: ["test-integration-connector.london.verify.govsvc.uk"]
-    ports:
-    - name: https
-      number: 443
-      protocol: TLS
-    location: MESH_EXTERNAL
-    resolution: DNS
-- name: nl-integration
-  service:
-    hosts: ["acc-eidas.minez.nl"]
-    ports:
-    - name: https
-      number: 443
-      protocol: TLS
-    location: MESH_EXTERNAL
-    resolution: DNS
-- name: dk-integration
-  service:
-    hosts: ["eidasconnector.test.eid.digst.dk"]
-    ports:
-    - name: https
-      number: 443
-      protocol: TLS
-    location: MESH_EXTERNAL
-    resolution: DNS
-- name: hub-prod
-  service:
-    hosts: ["www.signin.service.gov.uk"]
-    ports:
-    - name: https
-      number: 443
-      protocol: TLS
-    location: MESH_EXTERNAL
-    resolution: DNS
-- name: nl-prod
-  service:
-    hosts: ["eidas.minez.nl"]
-    ports:
-    - name: https
-      number: 443
-      protocol: TLS
-    location: MESH_EXTERNAL
-    resolution: DNS
-- name: dk-prod
-  service:
-    hosts: ["eidasconnector.eid.digst.dk"]
-    ports:
-    - name: https
-      number: 443
-      protocol: TLS
-    location: MESH_EXTERNAL
-    resolution: DNS
+
 - name: sqs-eu-west-2
   service:
     hosts: ["sqs.eu-west-2.amazonaws.com", "eu-west-2.queue.amazonaws.com"]
