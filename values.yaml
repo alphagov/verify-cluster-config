@@ -112,6 +112,13 @@ egressSafelist:
 
 namespaces:
 - name: verify-main
+  owner: alphagov
+  repository: verify-cluster-config
+  branch: master
+  path: config/verify-main
+  requiredApprovalCount: 2
+  ingress:
+    enabled: true
 
 - name: verify-connector-node-metadata
   owner: alphagov
