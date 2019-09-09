@@ -153,3 +153,18 @@ namespaces:
   path: ci/build
   permittedRolesRegex: "^$"
   requiredApprovalCount: 0
+
+extraPermissionsSRE:
+  - apiGroups: ["verify.gov.uk"]
+    resources: ["certificaterequests", "metadata"]
+    verbs:
+    - get
+    - list
+    - watch
+extraPermissionsDev:
+  - apiGroups: ["verify.gov.uk"]
+    resources: ["certificaterequests", "metadata"]
+    verbs:
+    - get
+    - list
+    - watch
