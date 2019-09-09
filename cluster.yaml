@@ -24,7 +24,7 @@ users-version: "master"
 users-path: "users"
 disable-destroy: true
 worker-instance-type: m5d.large
-worker-count: 9
+worker-count: 12
 ci-worker-instance-type: m5d.large
 ci-worker-count: 3
 github-approval-count: 1
