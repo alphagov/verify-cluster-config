@@ -138,6 +138,7 @@ jobs:
           account-role-arn: ((account-role-arn))
           cluster-name: ((cluster-name))
           github-approval-count: 0
+          config-approval-count: 0
           github-resource-image: ((github-resource-image))
           github-resource-tag: ((github-resource-tag))
           concourse-pipeline-name: ((concourse-pipeline-name))
