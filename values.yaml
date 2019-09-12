@@ -97,6 +97,8 @@ namespaces:
   branch: master
   path: ci/verify
   requiredApprovalCount: 2
+  ingress:
+    enabled: true
 
 - name: verify-metadata-controller
   owner: alphagov
@@ -114,18 +116,24 @@ namespaces:
   path: ci/build
   requiredApprovalCount: 2
   talksToHsm: true
+  ingress:
+    enabled: true
 - name: verify-proxy-node-integration
   owner: alphagov
   repository: verify-proxy-node
   path: ci/integration
   requiredApprovalCount: 2
   talksToHsm: true
+  ingress:
+    enabled: true
 - name: verify-proxy-node-prod
   owner: alphagov
   repository: verify-proxy-node
   path: ci/prod
   requiredApprovalCount: 2
   talksToHsm: true
+  ingress:
+    enabled: true
 
 - name: verify-doc-checking-staging
   owner: alphagov
