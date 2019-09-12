@@ -134,6 +134,8 @@ namespaces:
   path: ci/staging 
   permittedRolesRegex: "^$"
   requiredApprovalCount: 0
+  ingress:
+    enabled: true
 - name: verify-doc-checking-test
   owner: alphagov
   repository: doc-checking
@@ -141,6 +143,8 @@ namespaces:
   path: ci/test
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
+  ingress:
+    enabled: true
 - name: verify-doc-checking-prod
   owner: alphagov
   repository: doc-checking
@@ -148,6 +152,8 @@ namespaces:
   path: ci/prod
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
+  ingress:
+    enabled: true
 - name: verify-doc-checking-build
   owner: alphagov
   repository: doc-checking
@@ -155,6 +161,8 @@ namespaces:
   path: ci/build
   permittedRolesRegex: "^$"
   requiredApprovalCount: 0
+  ingress:
+    enabled: true
 
 extraPermissionsSRE:
   - apiGroups: ["verify.gov.uk"]
