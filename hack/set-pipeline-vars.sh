@@ -14,7 +14,7 @@ $FLY_BIN -t cd-gsp set-pipeline -p "${PIPELINE_NAME}" \
   --var "cluster-name=${CLUSTER_NAME}" \
   --var "concourse-pipeline-name=${PIPELINE_NAME}" \
   --var "concourse-team=gsp" \
-  --yaml-var "github-approvers=[noone]" \
+  --yaml-var "config-approvers=[noone]" \
   --var "github-resource-image=govsvc/concourse-github-resource" \
   --var "github-resource-tag=gsp-v1.0.44" \
   --yaml-var "trusted-developer-keys=[]" \
