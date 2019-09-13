@@ -64,7 +64,7 @@ resources:
     organization: alphagov
     repository: verify-cluster-config
     github_api_token: ((github-api-token))
-    approvers: ((github-approvers))
+    approvers: ((config-approvers))
     required_approval_count: 2
     commit_verification_keys: ((trusted-developer-keys))
 
@@ -137,7 +137,7 @@ jobs:
           account-name: ((account-name))
           account-role-arn: ((account-role-arn))
           cluster-name: ((cluster-name))
-          github-approval-count: 0
+          config-approval-count: 0
           github-resource-image: ((github-resource-image))
           github-resource-tag: ((github-resource-tag))
           concourse-pipeline-name: ((concourse-pipeline-name))
