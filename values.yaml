@@ -135,15 +135,6 @@ namespaces:
   ingress:
     enabled: true
 
-- name: verify-doc-checking-staging
-  owner: alphagov
-  repository: doc-checking
-  branch: OGD-321/fix-egress-for-ocsp
-  path: ci/staging 
-  permittedRolesRegex: "^$"
-  requiredApprovalCount: 0
-  ingress:
-    enabled: true
 - name: verify-doc-checking-test
   owner: alphagov
   repository: doc-checking
