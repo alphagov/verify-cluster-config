@@ -14,7 +14,7 @@ variable "subnet_ids" {
 }
 
 variable "security_group_id" {
-  type        = "list"
+  type        = "string"
   description = "The security group to allow access to the PSN VPC Endpoint."
 }
 
