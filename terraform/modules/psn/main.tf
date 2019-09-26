@@ -32,6 +32,7 @@ resource "aws_vpc_endpoint" "psn_service" {
 resource "aws_security_group" "psn_endpoint" {
   name        = "psn-endpoint"
   description = "The PSN VPC Endpoint"
+  vpc_id      = "${var.vpc_id}"
 }
 
 resource "aws_security_group_rule" "psn_ingress_from_worker" {
