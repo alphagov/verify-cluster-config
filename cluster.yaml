@@ -23,7 +23,7 @@ users-repository: "gds-trusted-developers"
 users-version: "master"
 users-path: "users"
 disable-destroy: true
-worker-instance-type: m5d.large
+worker-instance-type: m5d.xlarge
 worker-count: 12
 ci-worker-instance-type: m5d.large
 ci-worker-count: 3
