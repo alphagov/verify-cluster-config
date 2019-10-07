@@ -24,7 +24,7 @@ users-version: "master"
 users-path: "users"
 disable-destroy: true
 worker-instance-type: m5d.xlarge
-worker-count: 12
+worker-count: 0
 minimum-workers-per-az-count: 4
 maximum-workers-per-az-count: 6
 ci-worker-instance-type: m5d.large
