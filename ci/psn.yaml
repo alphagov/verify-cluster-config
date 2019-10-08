@@ -68,6 +68,16 @@ resources:
     required_approval_count: 2
     commit_verification_keys: ((trusted-developer-keys))
 
+- name: cluster-state
+  type: terraform
+  source:
+    env_name: ((account-name))
+    backend_type: s3
+    backend_config:
+      bucket: cd-gsp-private-qndvvc
+      region: eu-west-2
+      key: cluster-((cluster-name)).tfstate
+
 - name: psn-state
   type: terraform
   source:
@@ -147,6 +157,8 @@ jobs:
   plan:
   - get: src
     passed: [update]
+    trigger: true
+  - get: cluster-state
     trigger: true
   - put: psn-state
     params:
