@@ -70,16 +70,6 @@ egressSafelist:
       protocol: TLS
     location: MESH_EXTERNAL
     resolution: DNS
-- name: rds-eu-west-2
-  service:
-    hosts: ["*.eu-west-2.rds.amazonaws.com"]
-    addresses: ["10.0.0.0/8"]
-    ports:
-    - name: postgres
-      number: 3306
-      protocol: TCP
-    location: MESH_EXTERNAL
-    resolution: NONE
 - name: ocsp
   service:
     hosts: ["std-ocsp.trustwise.com"]
