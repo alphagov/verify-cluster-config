@@ -28,6 +28,8 @@ egressSafelist:
       - conn.dev.eidasnode.cz
       # Italy
       - connector.pre.eid.gov.it
+      # Malta
+      - stgmteidasnode.gov.mt
     ports:
     - name: https
       number: 443
@@ -50,6 +52,8 @@ egressSafelist:
       - conn.eidasnode.cz
       # Italy
       - connector.eid.gov.it
+      # Malta
+      - mteidasnode.gov.mt
     ports:
     - name: https
       number: 443
