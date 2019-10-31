@@ -26,7 +26,7 @@ resource_types:
   type: registry-image
   source:
     repository: govsvc/terraform-resource
-    tag: 0.13.0-beta.2
+    tag: gsp-vd066e31
 - name: github
   type: registry-image
   source:
@@ -164,6 +164,7 @@ jobs:
     params:
       terraform_source: src/terraform
       env_name: ((account-name))
+      plan_only: true
 
 - name: destroy
   plan:
