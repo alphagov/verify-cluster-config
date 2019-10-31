@@ -26,7 +26,7 @@ provider "aws" {
   region = "eu-west-2"
 
   assume_role {
-    role_arn = "${var.aws_account_role_arn}"
+    role_arn = var.aws_account_role_arn
   }
 }
 
@@ -34,8 +34,8 @@ data "terraform_remote_state" "gsp_cluster" {
   backend = "s3"
 
   config = {
-    bucket = "${var.gsp_cluster_state_bucket_name}"
-    key    = "${var.gsp_cluster_state_bucket_key}"
+    bucket = var.gsp_cluster_state_bucket_name
+    key    = var.gsp_cluster_state_bucket_key
     region = "eu-west-2"
   }
 
@@ -44,17 +44,17 @@ data "terraform_remote_state" "gsp_cluster" {
 
 module "psn" {
   source            = "./modules/psn"
-  vpc_id            = "${data.terraform_remote_state.gsp_cluster.vpc_id}"
-  vpc_endpoint      = "${var.vpc_endpoint}"
-  subnet_ids        = ["${data.terraform_remote_state.gsp_cluster.subnet_ids[0]}", "${data.terraform_remote_state.gsp_cluster.subnet_ids[1]}"]
-  security_group_id = "${data.terraform_remote_state.gsp_cluster.worker_security_group_id}"
+  vpc_id            = data.terraform_remote_state.gsp_cluster.outputs.vpc_id
+  vpc_endpoint      = var.vpc_endpoint
+  subnet_ids        = [data.terraform_remote_state.gsp_cluster.outputs.subnet_ids[0], data.terraform_remote_state.gsp_cluster.outputs.subnet_ids[1]]
+  security_group_id = data.terraform_remote_state.gsp_cluster.outputs.worker_security_group_id
 }
 
 resource "aws_route53_record" "dcs_dev" {
-  zone_id = "${data.terraform_remote_state.gsp_cluster.r53_zone_id}"
-  name    = "dcs-dev.${data.terraform_remote_state.gsp_cluster.cluster_domain}"
+  zone_id = data.terraform_remote_state.gsp_cluster.outputs.r53_zone_id
+  name    = "dcs-dev.${data.terraform_remote_state.gsp_cluster.outputs.cluster_domain}"
   type    = "CNAME"
   ttl     = 3600
 
-  records = ["nlb.${data.terraform_remote_state.gsp_cluster.cluster_domain}"]
+  records = ["nlb.${data.terraform_remote_state.gsp_cluster.outputs.cluster_domain}"]
 }
