@@ -164,7 +164,6 @@ jobs:
     params:
       terraform_source: src/terraform
       env_name: ((account-name))
-      plan_only: true
 
 - name: destroy
   plan:
