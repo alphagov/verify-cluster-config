@@ -26,7 +26,7 @@ disable-destroy: true
 worker-instance-type: m5d.xlarge
 minimum-workers-per-az-count: 1
 maximum-workers-per-az-count: 6
-ci-worker-instance-type: m5d.xlarge
+ci-worker-instance-type: m5.xlarge
 ci-worker-count: 3
 config-approval-count: 1
 enable-nlb: 1
