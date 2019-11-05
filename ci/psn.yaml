@@ -21,6 +21,49 @@ unpack_release: &unpack_release
   outputs:
   - name: platform
 
+generate_psn_resources: &generate_psn_resources
+  platform: linux
+  run:
+    path: /bin/bash
+    args:
+    - -euo
+    - pipefail
+    - -c
+    - |
+      mkdir -p psn-resources
+      echo "fetching resources from psn-state..."
+      jq -r '.psn_network_policy_yaml' ./psn-state/metadata > ./psn-resources/psn-network-policy.yaml
+      echo "OK!"
+  inputs:
+  - name: psn-state
+  outputs:
+  - name: psn-resources
+
+apply_kube_resources: &apply_kube_resources
+  platform: linux
+  params:
+    ACCOUNT_ROLE_ARN:
+    CLUSTER_NAME:
+    AWS_REGION: eu-west-2
+    AWS_DEFAULT_REGION: eu-west-2
+  run:
+    path: /bin/bash
+    args:
+    - -euo
+    - pipefail
+    - -c
+    - |
+      echo "Assuming AWS deployer role..."
+      AWS_CREDS="$(aws-assume-role $ACCOUNT_ROLE_ARN)"
+      eval "${AWS_CREDS}"
+      echo "Fetching kubeconfig from aws..."
+      aws eks update-kubeconfig --name "${CLUSTER_NAME}" --kubeconfig ./kubeconfig
+      export KUBECONFIG=$(pwd)/kubeconfig
+      echo "Applying PSN resources..."
+      kubectl apply -Rf psn-resources/
+  inputs:
+  - name: psn-resources
+
 resource_types:
 - name: terraform
   type: registry-image
@@ -164,6 +207,17 @@ jobs:
     params:
       terraform_source: src/terraform
       env_name: ((account-name))
+  - task: generate-psn-resources
+    image: task-toolbox
+    timeout: 5m
+    config: *generate_psn_resources
+  - task: apply-kube-resources
+    image: task-toolbox
+    timeout: 5m
+    config: *apply_kube_resources
+    params:
+      ACCOUNT_ROLE_ARN: ((account-role-arn))
+      CLUSTER_NAME: ((cluster-name))
 
 - name: destroy
   plan:

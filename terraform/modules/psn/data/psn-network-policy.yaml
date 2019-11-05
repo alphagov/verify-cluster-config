@@ -1,0 +1,22 @@
+apiVersion: crd.projectcalico.org/v1
+kind: GlobalNetworkPolicy
+metadata:
+  name: psn-egress-policy
+spec:
+  order: 90
+  types:
+  - Egress
+  egress:
+  - action: Deny
+    protocol: TCP
+    source:
+      selector: talksToPsn != 'true'
+    destination:
+      nets: ${psn_cidrs}
+  - action: Deny
+    protocol: TCP
+    source:
+      namespaceSelector: talksToPsn != 'true'
+    destination:
+      nets: ${psn_cidrs}
+  - action: Allow

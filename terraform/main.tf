@@ -58,3 +58,7 @@ resource "aws_route53_record" "dcs_dev" {
 
   records = ["nlb.${data.terraform_remote_state.gsp_cluster.outputs.cluster_domain}"]
 }
+
+output "psn_network_policy_yaml" {
+  value = module.psn.psn_network_policy_yaml
+}

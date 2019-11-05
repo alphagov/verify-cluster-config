@@ -82,3 +82,20 @@ resource "aws_route53_record" "psn_regioned_service" {
   records = [aws_vpc_endpoint.psn_service.dns_entry[count.index + 1]["dns_name"]]
 }
 
+data "aws_network_interface" "psn_interface" {
+  # https://www.terraform.io/docs/configuration/resources.html#using-expressions-in-count
+  # count = length(aws_vpc_endpoint.psn_service.network_interface_ids)
+  # It's currently 2 in the Verify cluster...so this will do for now
+  count = 2
+
+  id = aws_vpc_endpoint.psn_service.network_interface_ids[count.index]
+}
+
+output "psn_network_policy_yaml" {
+  value = templatefile(
+    "${path.module}/data/psn-network-policy.yaml",
+    {
+      psn_cidrs = jsonencode(formatlist("%s/32", data.aws_network_interface.psn_interface[*].private_ip))
+    }
+  )
+}
