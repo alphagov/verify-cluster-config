@@ -146,7 +146,7 @@ namespaces:
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
   ingress:
-    enabled: true
+    enabled: false
 - name: verify-doc-checking-build
   owner: alphagov
   repository: doc-checking
