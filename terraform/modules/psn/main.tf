@@ -83,12 +83,9 @@ resource "aws_route53_record" "psn_regioned_service" {
 }
 
 data "aws_network_interface" "psn_interface" {
-  # https://www.terraform.io/docs/configuration/resources.html#using-expressions-in-count
-  # count = length(aws_vpc_endpoint.psn_service.network_interface_ids)
-  # It's currently 2 in the Verify cluster...so this will do for now
-  count = 2
+  for_each = aws_vpc_endpoint.psn_service.network_interface_ids
 
-  id = aws_vpc_endpoint.psn_service.network_interface_ids[count.index]
+  id = each.value
 }
 
 output "psn_network_policy_yaml" {
