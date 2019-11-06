@@ -203,6 +203,7 @@ jobs:
     trigger: true
   - get: cluster-state
     trigger: true
+  - get: task-toolbox
   - put: psn-state
     params:
       terraform_source: src/terraform
