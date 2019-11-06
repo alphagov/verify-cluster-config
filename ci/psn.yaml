@@ -208,6 +208,7 @@ jobs:
     params:
       terraform_source: src/terraform
       env_name: ((account-name))
+  - get: psn-state
   - task: generate-psn-resources
     image: task-toolbox
     timeout: 5m
