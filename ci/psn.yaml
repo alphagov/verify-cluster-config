@@ -203,7 +203,6 @@ jobs:
     trigger: true
   - get: cluster-state
     trigger: true
-  - get: task-toolbox
   - put: psn-state
     params:
       terraform_source: src/terraform
@@ -214,6 +213,7 @@ jobs:
   - get: psn-state
     passed: [deploy-psn-vpc-endpoint]
     trigger: true
+  - get: task-toolbox
   - task: generate-psn-resources
     image: task-toolbox
     timeout: 5m
