@@ -92,7 +92,7 @@ output "psn_network_policy_yaml" {
   value = templatefile(
     "${path.module}/data/psn-network-policy.yaml",
     {
-      psn_cidrs = jsonencode(formatlist("%s/32", data.aws_network_interface.psn_interface[*].private_ip))
+      psn_cidrs = jsonencode(formatlist("%s/32", [for interface in data.aws_network_interface.psn_interface : interface.private_ip]))
     }
   )
 }
