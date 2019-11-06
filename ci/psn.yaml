@@ -208,7 +208,12 @@ jobs:
     params:
       terraform_source: src/terraform
       env_name: ((account-name))
+
+- name: apply-kube-resources
+  plan:
   - get: psn-state
+    passed: [deploy-psn-vpc-endpoint]
+    trigger: true
   - task: generate-psn-resources
     image: task-toolbox
     timeout: 5m
