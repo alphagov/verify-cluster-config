@@ -107,6 +107,7 @@ namespaces:
 - name: verify-proxy-node-build
   owner: alphagov
   repository: verify-proxy-node
+  branch: release/single-country-legacy
   path: ci/build
   requiredApprovalCount: 2
   talksToHsm: true
@@ -115,12 +116,14 @@ namespaces:
 - name: verify-proxy-node-integration
   owner: alphagov
   repository: verify-proxy-node
+  branch: release/single-country-legacy
   path: ci/integration
   requiredApprovalCount: 2
   talksToHsm: true
   ingress:
     enabled: true
 - name: verify-proxy-node-prod
+  branch: release/single-country-legacy
   owner: alphagov
   repository: verify-proxy-node
   path: ci/prod
