@@ -161,7 +161,7 @@ namespaces:
   path: ci/prod
   permittedRolesRegex: "^$"
   requiredApprovalCount: 2
-  talksToPsn: false
+  talksToPsn: true
   ingress:
     enabled: false
 - name: verify-doc-checking-build
