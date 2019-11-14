@@ -14,7 +14,7 @@ egressSafelist:
     hosts:
       # Stub Connector build
       - test-connector.london.verify.govsvc.uk #legacy single country stub connector
-      - eidas-proxy-node-build-test-connector.london.verify.govsvc.uk
+      - eidas-stub-connector-test.london.verify.govsvc.uk
       # Hub integration
       - www.integration.signin.service.gov.uk
     ports:
