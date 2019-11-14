@@ -9,11 +9,24 @@ global:
 # see https://istio.io/docs/reference/config/networking/v1alpha3/service-entry/#ServiceEntry
 # for the format of the `service` block
 egressSafelist:
-- name: proxy-node-integration
+- name: proxy-node-build
   service:
     hosts:
       # Stub Connector build
-      - test-connector.london.verify.govsvc.uk
+      - test-connector.london.verify.govsvc.uk #legacy single country stub connector
+      - eidas-stub-connector-test.london.verify.govsvc.uk
+      # Hub integration
+      - www.integration.signin.service.gov.uk
+    ports:
+      - name: https
+        number: 443
+        protocol: TLS
+    location: MESH_EXTERNAL
+    resolution: DNS
+
+- name: proxy-node-integration
+  service:
+    hosts:
       # Stub Connector
       - test-integration-connector.london.verify.govsvc.uk
       # Hub integration
