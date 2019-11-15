@@ -109,7 +109,6 @@ resources:
     github_api_token: ((github-api-token))
     approvers: ((config-approvers))
     required_approval_count: 2
-    commit_verification_keys: ((trusted-developer-keys))
 
 - name: cluster-state
   type: terraform
