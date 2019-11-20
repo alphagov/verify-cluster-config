@@ -184,7 +184,6 @@ jobs:
         config_file: src/ci/psn.yaml
         vars_files:
         - trusted-contributors/github.vars.yaml
-        - trusted-contributors/keys.vars.yaml
         vars:
           account-name: ((account-name))
           account-role-arn: ((account-role-arn))
