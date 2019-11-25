@@ -98,6 +98,8 @@ namespaces:
   ingress:
     enabled: true
 
+# Connector Node namespaces
+
 - name: verify-connector-node-metadata
   owner: alphagov
   repository: verify-metadata
@@ -107,6 +109,23 @@ namespaces:
   ingress:
     enabled: true
 
+# Proxy Node namespaces
+
+# TODO: Need to use the master branch VMC for the new PN
+# once we have deployment of the VMC from for the legacy PN
+- name: verify-eidas-proxy-node-build
+  owner: alphagov
+  repository: verify-proxy-node
+  branch: master
+  path: ci/build
+  requiredApprovalCount: 2
+  talksToHsm: true
+  ingress:
+    enabled: true
+
+# Proxy Node legacy (single-country) namespaces
+
+# TODO: The VMC needs to move to a legacy branch too
 - name: verify-metadata-controller
   owner: alphagov
   repository: verify-metadata-controller
@@ -126,6 +145,7 @@ namespaces:
   talksToHsm: true
   ingress:
     enabled: true
+
 - name: verify-proxy-node-integration
   owner: alphagov
   repository: verify-proxy-node
@@ -135,6 +155,7 @@ namespaces:
   talksToHsm: true
   ingress:
     enabled: true
+
 - name: verify-proxy-node-prod
   branch: release/single-country-legacy
   owner: alphagov
@@ -144,6 +165,8 @@ namespaces:
   talksToHsm: true
   ingress:
     enabled: true
+
+# DCS namespaces
 
 - name: verify-doc-checking-test
   owner: alphagov
@@ -188,4 +211,3 @@ extraPermissionsDev:
     - get
     - list
     - watch
-
