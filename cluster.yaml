@@ -30,3 +30,4 @@ ci-worker-instance-type: m5.xlarge
 ci-worker-count: 3
 config-approval-count: 1
 enable-nlb: 1
+cls-destination-enabled: 1
