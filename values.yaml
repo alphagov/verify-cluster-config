@@ -163,7 +163,7 @@ namespaces:
   requiredApprovalCount: 2
   talksToPsn: true
   ingress:
-    enabled: false
+    enabled: true
 - name: verify-doc-checking-build
   owner: alphagov
   repository: doc-checking
