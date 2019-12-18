@@ -193,7 +193,7 @@ namespaces:
   branch: master
   path: ci/build
   permittedRolesRegex: "^$"
-  requiredApprovalCount: 0
+  requiredApprovalCount: 2
   ingress:
     enabled: true
 - name: verify-doc-checking-integration
