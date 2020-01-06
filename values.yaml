@@ -174,7 +174,7 @@ namespaces:
   branch: master
   path: ci/test
   permittedRolesRegex: "^$"
-  requiredApprovalCount: 2
+  requiredApprovalCount: 1
   ingress:
     enabled: true
 - name: verify-doc-checking-prod
@@ -183,7 +183,7 @@ namespaces:
   branch: master
   path: ci/prod
   permittedRolesRegex: "^$"
-  requiredApprovalCount: 2
+  requiredApprovalCount: 1
   talksToPsn: true
   ingress:
     enabled: true
@@ -193,7 +193,7 @@ namespaces:
   branch: master
   path: ci/build
   permittedRolesRegex: "^$"
-  requiredApprovalCount: 2
+  requiredApprovalCount: 1
   ingress:
     enabled: true
 - name: verify-doc-checking-integration
@@ -202,7 +202,7 @@ namespaces:
   branch: master
   path: ci/integration
   permittedRolesRegex: "^$"
-  requiredApprovalCount: 2
+  requiredApprovalCount: 1
   ingress:
     enabled: true
 
