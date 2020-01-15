@@ -195,15 +195,6 @@ namespaces:
   requiredApprovalCount: 1
   ingress:
     enabled: true
-- name: verify-doc-checking-integration
-  owner: alphagov
-  repository: doc-checking
-  branch: master
-  path: ci/integration
-  permittedRolesRegex: "^$"
-  requiredApprovalCount: 1
-  ingress:
-    enabled: true
 
 extraPermissionsSRE:
   - apiGroups: ["verify.gov.uk"]
