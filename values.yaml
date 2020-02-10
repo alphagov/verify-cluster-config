@@ -105,7 +105,7 @@ namespaces:
   repository: verify-metadata
   branch: master
   path: ci/verify
-  requiredApprovalCount: 2
+  requiredApprovalCount: 0
   ingress:
     enabled: true
 
