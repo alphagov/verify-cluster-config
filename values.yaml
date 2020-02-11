@@ -123,6 +123,17 @@ namespaces:
   ingress:
     enabled: true
 
+# Proxy Node namespace for both the integration and production release
+- name: verify-eidas-proxy-node-deploy
+  owner: alphagov
+  repository: verify-proxy-node
+  branch: master
+  path: ci/deploy
+  requiredApprovalCount: 2
+  talksToHsm: true
+  ingress:
+    enabled: true
+
 # Proxy Node legacy (single-country) namespaces
 
 # TODO: The VMC needs to move to a legacy branch too
