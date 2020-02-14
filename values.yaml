@@ -32,6 +32,7 @@ egressSafelist:
       # Hub integration
       - www.integration.signin.service.gov.uk
       # HMRC integration
+      - hmrc-integration-connector.london.verify.govsvc.uk
       - test-www.tax.service.gov.uk
       # Netherlands
       - acc-eidas.minez.nl
