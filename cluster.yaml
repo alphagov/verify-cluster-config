@@ -23,7 +23,6 @@ users-repository: "gds-trusted-developers"
 users-version: "master"
 users-path: "users"
 disable-destroy: true
-worker-instance-type: m5.xlarge
 minimum-workers-per-az-count: 1
 maximum-workers-per-az-count: 6
 ci-worker-instance-type: m5.xlarge
