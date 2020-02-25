@@ -25,6 +25,7 @@ users-path: "users"
 disable-destroy: true
 minimum-workers-per-az-count: 1
 maximum-workers-per-az-count: 6
+worker-on-demand-percentage-above-base: 50
 ci-worker-instance-type: m5.xlarge
 ci-worker-count: 3
 config-approval-count: 1
