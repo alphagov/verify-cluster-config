@@ -205,6 +205,7 @@ namespaces:
   requiredApprovalCount: 1
   ingress:
     enabled: true
+- name: verify-doc-checking-sandbox
 
 extraPermissionsSRE:
   - apiGroups: ["verify.gov.uk"]
