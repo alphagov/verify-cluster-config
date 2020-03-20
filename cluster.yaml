@@ -29,3 +29,5 @@ ci-worker-instance-type: m5.xlarge
 ci-worker-count: 3
 config-approval-count: 1
 enable-nlb: 1
+eks-version: "1.14"
+worker-eks-version: "1.14"
