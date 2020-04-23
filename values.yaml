@@ -28,7 +28,8 @@ egressSafelist:
   service:
     hosts:
       # Stub Connector
-      - test-integration-connector.london.verify.govsvc.uk
+      - test-integration-connector.london.verify.govsvc.uk #legacy single country stub connector
+      - stub-connector.eidas.integration.london.verify.govsvc.uk
       # Hub integration
       - www.integration.signin.service.gov.uk
       # HMRC integration
