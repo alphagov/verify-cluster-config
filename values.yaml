@@ -14,7 +14,8 @@ egressSafelist:
     hosts:
       # Stub Connector build
       - test-connector.london.verify.govsvc.uk #legacy single country stub connector
-      - stub-connector.eidas.test.london.verify.govsvc.uk
+      - stub-connector.test.verify-eidas-proxy-node-build.london.verify.govsvc.uk # multi-country temporary URL with namespace
+      - stub-connector.eidas.test.london.verify.govsvc.uk # multi-country custom domain
       # Hub integration
       - www.integration.signin.service.gov.uk
     ports:
@@ -29,7 +30,8 @@ egressSafelist:
     hosts:
       # Stub Connector
       - test-integration-connector.london.verify.govsvc.uk #legacy single country stub connector
-      - stub-connector.eidas.integration.london.verify.govsvc.uk
+      - stub-connector.integration.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk # multi-country temporary URL with namespace
+      - stub-connector.eidas.integration.london.verify.govsvc.uk # multi-country custom domain
       # Hub integration
       - www.integration.signin.service.gov.uk
       # HMRC integration
