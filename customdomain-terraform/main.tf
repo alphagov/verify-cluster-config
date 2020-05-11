@@ -71,45 +71,46 @@ resource "aws_route53_record" "mw-alias" {
   ]
 }
 
-#module "staging_proxy_node" {
-#  source               = "./modules/customdomain"
-#  aws_account_role_arn = var.aws_account_role_arn
-#  zone_id              = aws_route53_zone.eidas_zone.zone_id
-#  govuk_domain         = "proxy-node.test.eidas.signin.service.gov.uk"
-#  govsvcuk_domain      = "proxy-node.test.verify-eidas-proxy-node-build.london.verify.govsvc.uk"
-#}
-#module "integration_proxy_node" {
-#  source               = "./modules/customdomain"
-#  aws_account_role_arn = var.aws_account_role_arn
-#  zone_id              = aws_route53_zone.eidas_zone.zone_id
-#  govuk_domain         = "proxy-node.integration.eidas.signin.service.gov.uk"
-#  govsvcuk_domain      = "proxy-node.integration.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"
-#}
+module "staging_proxy_node" {
+  source               = "./modules/customdomain"
+  aws_account_role_arn = var.aws_account_role_arn
+  zone_id              = aws_route53_zone.eidas_zone.zone_id
+  govuk_domain         = "proxy-node.test.eidas.signin.service.gov.uk"
+  govsvcuk_domain      = "proxy-node.test.verify-eidas-proxy-node-build.london.verify.govsvc.uk"
+}
 
-#module "prod_proxy_node" {
-#  source               = "./modules/customdomain"
-#  aws_account_role_arn = var.aws_account_role_arn
-#  zone_id              = aws_route53_zone.eidas_zone.zone_id
-#  govuk_domain         = "proxy-node.eidas.signin.service.gov.uk"
-#  govsvcuk_domain      = "proxy-node.production.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"
-#  # TODO: this will need to change per https://www.terraform.io/docs/providers/aws/r/acm_certificate.html#importing-an-existing-certificate when we get a QWAC cert issued
-#}
+module "integration_proxy_node" {
+  source               = "./modules/customdomain"
+  aws_account_role_arn = var.aws_account_role_arn
+  zone_id              = aws_route53_zone.eidas_zone.zone_id
+  govuk_domain         = "proxy-node.integration.eidas.signin.service.gov.uk"
+  govsvcuk_domain      = "proxy-node.integration.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"
+}
 
-#module "staging_stub_connector" {
-#  source               = "./modules/customdomain"
-#  aws_account_role_arn = var.aws_account_role_arn
-#  zone_id              = aws_route53_zone.eidas_zone.zone_id
-#  govuk_domain         = "stub-connector.test.eidas.signin.service.gov.uk"
-#  govsvcuk_domain      = "stub-connector.test.verify-eidas-proxy-node-build.london.verify.govsvc.uk"
-#}
+module "prod_proxy_node" {
+  source               = "./modules/customdomain"
+  aws_account_role_arn = var.aws_account_role_arn
+  zone_id              = aws_route53_zone.eidas_zone.zone_id
+  govuk_domain         = "proxy-node.eidas.signin.service.gov.uk"
+  govsvcuk_domain      = "proxy-node.production.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"
+  # TODO: this will need to change per https://www.terraform.io/docs/providers/aws/r/acm_certificate.html#importing-an-existing-certificate when we get a QWAC cert issued
+}
 
-#module "integration_stub_connector" {
-#  source               = "./modules/customdomain"
-#  aws_account_role_arn = var.aws_account_role_arn
-#  zone_id              = aws_route53_zone.eidas_zone.zone_id
-#  govuk_domain         = "stub-connector.integration.eidas.signin.service.gov.uk"
-#  govsvcuk_domain      = "stub-connector.integration.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"
-#}
+module "staging_stub_connector" {
+  source               = "./modules/customdomain"
+  aws_account_role_arn = var.aws_account_role_arn
+  zone_id              = aws_route53_zone.eidas_zone.zone_id
+  govuk_domain         = "stub-connector.test.eidas.signin.service.gov.uk"
+  govsvcuk_domain      = "stub-connector.test.verify-eidas-proxy-node-build.london.verify.govsvc.uk"
+}
+
+module "integration_stub_connector" {
+  source               = "./modules/customdomain"
+  aws_account_role_arn = var.aws_account_role_arn
+  zone_id              = aws_route53_zone.eidas_zone.zone_id
+  govuk_domain         = "stub-connector.integration.eidas.signin.service.gov.uk"
+  govsvcuk_domain      = "stub-connector.integration.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"
+}
 
 output "eidas_zone_name_servers" {
   value = aws_route53_zone.eidas_zone.name_servers
