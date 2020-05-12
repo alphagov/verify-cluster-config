@@ -86,6 +86,20 @@ resource "aws_cloudfront_distribution" "cloudfront_dist" {
       cookies {
         forward = "all"
       }
+
+      headers = [
+        "Content-Type",
+        "Referer",
+        "User-Agent",
+        "Accept",
+        "Accept-Language",
+        "Content-Length",
+        "Origin",
+        "DNT",
+        "Upgrade-Insecure-Requests",
+        "Pragma",
+        "Cache-Control"
+      ]
     }
 
     viewer_protocol_policy = "redirect-to-https"
