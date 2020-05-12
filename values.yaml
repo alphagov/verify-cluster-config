@@ -15,7 +15,7 @@ egressSafelist:
       # Stub Connector build
       - test-connector.london.verify.govsvc.uk #legacy single country stub connector
       - stub-connector.test.verify-eidas-proxy-node-build.london.verify.govsvc.uk
-      - stub-connector.eidas.test.signin.service.gov.uk
+      - stub-connector.test.eidas.signin.service.gov.uk
       # Hub integration
       - www.integration.signin.service.gov.uk
     ports:
@@ -31,7 +31,7 @@ egressSafelist:
       # Stub Connector
       - test-integration-connector.london.verify.govsvc.uk #legacy single country stub connector
       - stub-connector.integration.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk
-      - stub-connector.eidas.integration.signin.service.gov.uk
+      - stub-connector.integration.eidas.signin.service.gov.uk
       # Hub integration
       - www.integration.signin.service.gov.uk
       # HMRC integration
