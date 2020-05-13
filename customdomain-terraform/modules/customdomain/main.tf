@@ -96,7 +96,6 @@ resource "aws_cloudfront_distribution" "cloudfront_dist" {
         "Content-Length",
         "Origin",
         "DNT",
-        "Upgrade-Insecure-Requests",
         "Pragma",
         "Cache-Control"
       ]
