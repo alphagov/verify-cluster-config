@@ -37,6 +37,8 @@ egressSafelist:
       # HMRC integration
       - hmrc-integration-connector.london.verify.govsvc.uk
       - test-www.tax.service.gov.uk
+      # European Commission
+      - ec.europa.eu
       # Netherlands
       - acc-eidas.minez.nl
       # Denmark
