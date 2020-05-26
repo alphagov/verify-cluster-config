@@ -39,18 +39,20 @@ egressSafelist:
       - test-www.tax.service.gov.uk
       # European Commission
       - ec.europa.eu
-      # Netherlands
-      - acc-eidas.minez.nl
-      # Denmark
-      - eidasconnector.test.eid.digst.dk
-      # Sweden
-      - qa.connector.eidas.swedenconnect.se
       # Czechia
       - conn.dev.eidasnode.cz
+      # Denmark
+      - eidasconnector.test.eid.digst.dk
+      # Estonia
+      - eidastest.eesti.ee
       # Italy
       - connector.pre.eid.gov.it
       # Malta
       - stgmteidasnode.gov.mt
+      # Netherlands
+      - acc-eidas.minez.nl
+      # Sweden
+      - qa.connector.eidas.swedenconnect.se
     ports:
     - name: https
       number: 443
