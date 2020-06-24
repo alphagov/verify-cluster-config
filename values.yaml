@@ -39,18 +39,58 @@ egressSafelist:
       - test-www.tax.service.gov.uk
       # European Commission
       - ec.europa.eu
-      # Czechia
+      # Austria
+      - eidas-test.bmi.gv.at
+      # Belgium
+      - idp.iamfas.qa.belgium.be
+      # Bulgaria
+      - eidas-test.egov.bg
+      # Croatia
+      - eidastst.fina.hr
+      # Cyprus
+      - pre-eidas.mof.gov.cy
+      # Czech Republic
       - conn.dev.eidasnode.cz
       # Denmark
       - eidasconnector.test.eid.digst.dk
       # Estonia
       - eidastest.eesti.ee
+      # Finland
+      - nodefi1.apro.tunnistus.fi
+      # France
+      - fc-node.eidas.integ01.dev-franceconnect.fr
+      # Greece
+      - pre.eidas.gov.gr
+      # Hungary
+      - hpeps.teszt.gov.hu
+      # Iceland
+      - testnode.island.is
+      # Ireland
+      - demo.eidasnode.gov.ie
       # Italy
       - connector.pre.eid.gov.it
+      # Latvia
+      - eidastest.vraa.gov.lv
+      # Lithuania
+      - testpeps.eid.lt
+      # Luxembourg
+      - eidas-test.services-publics.lu
       # Malta
       - stgmteidasnode.gov.mt
       # Netherlands
       - acc-eidas.minez.nl
+      # Norway
+      - eidas-test1.difi.eon.no
+      # Poland
+      - test.eidas.gov.pl
+      # Portugal
+      - preprod.eidas.autenticacao.gov.pt
+      # Slovakia
+      - eidas.upvsfixnew.gov.sk
+      # Slovenia
+      - sipeps-test.gov.si
+      # Spain
+      - se-eidas.redsara.es
       # Sweden
       - qa.connector.eidas.swedenconnect.se
     ports:
