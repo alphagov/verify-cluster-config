@@ -32,11 +32,6 @@ resource_types:
   source:
     repository: ((github-resource-image))
     tag: ((github-resource-tag))
-- name: concourse-pipeline
-  type: docker-image
-  source:
-    repository: concourse/concourse-pipeline-resource
-    tag: "6.0.0"
 
 resources:
 - name: gsp
@@ -88,14 +83,6 @@ resources:
     repository: govsvc/task-toolbox
     tag: latest
 
-- name: pipeline
-  type: concourse-pipeline
-  source:
-    teams:
-    - name: gsp
-      username: gsp
-      password: ((readonly_local_user_password))
-
 jobs:
 - name: update
   plan:
@@ -122,23 +109,17 @@ jobs:
       ACCOUNT_NAME: ((account-name))
       CLUSTER_PUBLIC_KEY: ((ci-system-gpg-public))
 
-  - put: pipeline
-    params:
-      pipelines:
-      - name: ((concourse-pipeline-name))
-        team: ((concourse-team))
-        config_file: src/ci/customdomains.yaml
-        vars_files:
-        - trusted-contributors/github.vars.yaml
-        vars:
-          account-name: ((account-name))
-          account-role-arn: ((account-role-arn))
-          cluster-name: ((cluster-name))
-          config-approval-count: 0
-          github-resource-image: ((github-resource-image))
-          github-resource-tag: ((github-resource-tag))
-          concourse-pipeline-name: ((concourse-pipeline-name))
-          concourse-team: ((concourse-team))
+  - set_pipeline: ((concourse-pipeline-name))
+    file: src/ci/customdomains.yaml
+    var_files:
+    - trusted-contributors/github.vars.yaml
+    vars:
+      account-name: ((account-name))
+      account-role-arn: ((account-role-arn))
+      cluster-name: ((cluster-name))
+      github-resource-image: ((github-resource-image))
+      github-resource-tag: ((github-resource-tag))
+      concourse-pipeline-name: ((concourse-pipeline-name))
 
 - name: deploy-customdomains
   plan:
