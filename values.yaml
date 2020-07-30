@@ -216,16 +216,6 @@ namespaces:
   ingress:
     enabled: true
 
-- name: verify-proxy-node-prod
-  branch: release/single-country-legacy
-  owner: alphagov
-  repository: verify-proxy-node
-  path: ci/prod
-  requiredApprovalCount: 2
-  talksToHsm: true
-  ingress:
-    enabled: true
-
 # DCS namespaces
 - name: verify-doc-checking-prod
   owner: alphagov
