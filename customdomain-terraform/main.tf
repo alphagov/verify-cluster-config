@@ -87,13 +87,13 @@ module "integration_proxy_node" {
   govsvcuk_domain      = "proxy-node.integration.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"
 }
 
-resource "aws_route53_record" "prod_proxy_node" {
-  zone_id = aws_route53_zone.eidas_zone.zone_id
-  name    = "proxy-node.eidas.signin.service.gov.uk"
-  type    = "CNAME"
-  ttl     = 3600
-
-  records = ["proxy-node.production.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"]
+module "prod_proxy_node" {
+  source               = "./modules/customdomain"
+  aws_account_role_arn = var.aws_account_role_arn
+  zone_id              = aws_route53_zone.eidas_zone.zone_id
+  govuk_domain         = "proxy-node.eidas.signin.service.gov.uk"
+  govsvcuk_domain      = "proxy-node.production.verify-eidas-proxy-node-deploy.london.verify.govsvc.uk"
+  # TODO: this will need to change per https://www.terraform.io/docs/providers/aws/r/acm_certificate.html#importing-an-existing-certificate when we get a QWAC cert issued
 }
 
 module "staging_stub_connector" {
