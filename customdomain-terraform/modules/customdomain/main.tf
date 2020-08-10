@@ -52,7 +52,7 @@ resource "aws_route53_record" "cert_validation" {
 resource "aws_acm_certificate_validation" "cert-validation" {
   provider                = aws.us-east-1
   certificate_arn         = aws_acm_certificate.cert.arn
-  validation_record_fqdns = [aws_route53_record.cert_validation.fqdn]
+  validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
 }
 
 resource "aws_cloudfront_distribution" "cloudfront_dist" {
