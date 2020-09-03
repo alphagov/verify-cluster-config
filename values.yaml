@@ -117,6 +117,9 @@ egressSafelist:
       - connector.eid.gov.it
       # Malta
       - mteidasnode.gov.mt
+      # Estonia
+      - eidas.ria.ee
+
     ports:
     - name: https
       number: 443
