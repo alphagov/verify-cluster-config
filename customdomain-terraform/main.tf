@@ -71,6 +71,17 @@ resource "aws_route53_record" "mw-alias" {
   ]
 }
 
+resource "aws_route53_record" "mw-alias-cert" {
+  zone_id = aws_route53_zone.eidas_zone.zone_id
+  name    = "_11c1986930ab9e885635e10f7ecd8f50.middleware-de.eidas.signin.service.gov.uk"
+  type    = "CNAME"
+  ttl     = 300
+
+  records = [
+    "_62c018057590aa465f5159cbdf23b281.tljzshvwok.acm-validations.aws."
+  ]
+}
+
 module "staging_proxy_node" {
   source               = "./modules/customdomain"
   aws_account_role_arn = var.aws_account_role_arn
