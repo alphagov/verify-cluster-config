@@ -119,6 +119,8 @@ egressSafelist:
       - mteidasnode.gov.mt
       # Estonia
       - eidas.ria.ee
+      # Spain
+      - eidas.redsara.es
 
     ports:
     - name: https
