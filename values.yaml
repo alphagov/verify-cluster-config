@@ -121,6 +121,8 @@ egressSafelist:
       - eidas.ria.ee
       # Spain
       - eidas.redsara.es
+      # Slovakia
+      - eidas.slovensko.sk
 
     ports:
     - name: https
