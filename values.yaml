@@ -165,9 +165,6 @@ namespaces:
     enabled: true
 
 # Proxy Node namespaces
-
-# TODO: Need to use the master branch VMC for the new PN
-# once we have deployment of the VMC from for the legacy PN
 - name: verify-eidas-proxy-node-build
   owner: alphagov
   repository: verify-proxy-node
@@ -189,9 +186,7 @@ namespaces:
   ingress:
     enabled: true
 
-# Proxy Node legacy (single-country) namespaces
-
-# TODO: The VMC needs to move to a legacy branch too
+# Verify Metadata Controller (VMC) namespace
 - name: verify-metadata-controller
   owner: alphagov
   repository: verify-metadata-controller
