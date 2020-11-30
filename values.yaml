@@ -123,6 +123,8 @@ egressSafelist:
       - eidas.slovensko.sk
       # Greece
       - eidas.gov.gr
+      # Belgium
+      - idp.iamfas.belgium.be
 
     ports:
     - name: https
