@@ -22,7 +22,7 @@ users-organization: "alphagov"
 users-repository: "gds-trusted-developers"
 users-version: "master"
 users-path: "users"
-disable-destroy: true
+disable-destroy: false
 minimum-workers-per-az-count: 1
 maximum-workers-per-az-count: 8
 ci-worker-instance-type: m5.xlarge
